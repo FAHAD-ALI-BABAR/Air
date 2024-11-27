@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="output.css">
+    <title>Airbnb Listings</title>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white w-full py-6 text-center shadow-lg">
+        <h1 class="text-4xl font-bold tracking-wide">Welcome to Airbnb Fav-lists</h1>
+    </header>
+    <nav class="bg-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-center items-center h-16">
+            <!-- Logo -->
+            
+    
+            <!-- Desktop Links -->
+            <div class="hidden md:flex  space-x-16">
+              <a href="/" class="text-white hover:text-blue-200 transition">Home</a>
+              <a href="/bookings" class="text-white hover:text-blue-200 transition">Bookings</a>
+              <a href="/home-list" class="text-white hover:text-blue-200 transition">Home-list</a>
+              <a href="/fav-list" class="text-white hover:text-blue-200 transition">Favourites</a>
+              <a href="/host/host-home-list" class="text-white hover:text-blue-200 transition">Host-Homes</a>
+            </div>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Register Button -->
+    <main class="flex flex-col items-center justify-center mt-8">
+        <a href="/host/register"
+            class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+            Go to Register Page
+        </a>
+    </main>
+
+    <!-- Listings Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Heading -->
+            <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">
+                Your Active Listings
+                <div class="h-1 w-20 bg-blue-500 mx-auto mt-4 rounded-full"></div>
+            </h2>
+
+            <!-- Listings Grid -->
+            <div class="grid gap-6 lg:grid-cols-3 sm:grid-cols-2">
+                <% registeredHomes.forEach((home) => { %>
+                <!-- Property Card -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden border border-gray-200">
+                    <div class="relative">
+                        <!-- Static Image -->
+                        <img src="property.jpeg" alt="Property" class="w-full h-48 object-cover">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">
+                            <%= home.Rating %> ★
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                            <%= home.Name %>
+                        </h3>
+                        <p class="text-gray-600 mt-2">
+                            Location: <%= home.Location %>
+                        </p>
+                        <p class="text-gray-600 mt-1">
+                            Price: $<%= home.Price %>
+                        </p>
+                        <p class="text-gray-600 mt-1">
+                            Listed on: <%= new Date().toLocaleDateString() %>
+                        </p>
+                        <a href="#" class="mt-4 inline-block text-blue-700 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 glass-button">
+                            Book
+                        </a>
+                        
+                        
+                        
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+
+            <!-- No Listings Placeholder -->
+            <% if (registeredHomes.length === 0) { %>
+            <div class="text-center py-12">
+                <p class="text-gray-600">No listings found. Add your first property!</p>
+            </div>
+            <% } %>
+        </div>
+    </section>
+</body>
+</html>

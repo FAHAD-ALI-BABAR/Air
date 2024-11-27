@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="output.css">
+    <title>Home-Details</title>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white w-full py-6 text-center shadow-lg">
+        <h1 class="text-4xl font-bold tracking-wide">Welcome to Home-Details Page</h1>
+    </header>
+    <nav class="bg-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-center items-center h-16">
+            <!-- Logo -->
+            
+    
+            <!-- Desktop Links -->
+            <div class="hidden md:flex  space-x-16">
+              <a href="/" class="text-white hover:text-blue-200 transition">Home</a>
+              <a href="/bookings" class="text-white hover:text-blue-200 transition">Bookings</a>
+              <a href="/home-list" class="text-white hover:text-blue-200 transition">Home-list</a>
+              <a href="/fav-list" class="text-white hover:text-blue-200 transition">Favourites</a>
+              <a href="/host/host-home-list" class="text-white hover:text-blue-200 transition">Host Homes</a>
+            </div>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Register Button -->
+    <main class="flex flex-col items-center justify-center mt-8">
+        <a href="/host/register"
+            class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+            Go to Register Page
+        </a>
+    </main>
+
+    <!-- Listings Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Heading -->
+            <!-- <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">
+                Your Active Listings
+                <div class="h-1 w-20 bg-blue-500 mx-auto mt-4 rounded-full"></div>
+            </h2> -->
+
+            <!-- Listings Grid -->
+            <div class="container mx-auto p-6">
+                <!-- Header Section -->
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-800">
+                       Your Property Details
+                    </h1>
+                    <p class="mt-2 text-lg text-gray-500">
+                        Discover the best deals on unique stays and premium properties.
+                    </p>
+                </div>
+            
+                <!-- Property Details Section -->
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Left Column: Image Section -->
+                    <div class="lg:col-span-1">
+                        <div class="rounded-lg overflow-hidden shadow-md">
+                            <img 
+                                src="/property.jpeg" 
+                                alt="<%= home.Name %>" 
+                                class="w-full object-cover"
+                            />
+                        </div>
+                    </div>
+            
+                    <!-- Right Column: Details Section -->
+                    <div class="lg:col-span-2 bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                        <!-- Title and Rating -->
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-3xl font-bold text-gray-800">
+                                Name: <%= home.Name %>
+                            </h2>
+                            <div class="flex items-center gap-2">
+                                <span class="text-blue-600 font-medium text-xl">
+                                   Rating: <%= home.Rating %> ★
+                                </span>
+                                <span class="text-gray-500 text-sm">(150 reviews)</span>
+                            </div>
+                        </div>
+            
+                        <!-- Location -->
+                        <p class="mt-4 text-lg text-gray-500">
+                            <i class="fas fa-map-marker-alt text-blue-500"></i>
+                            <span class="ml-2 font-medium">Location:</span> <%= home.Location %>
+                        </p>
+            
+                        <!-- Price -->
+                        <div class="mt-4">
+                            <p class="text-2xl font-semibold text-gray-900">
+                               Price: $<%= home.Price %>
+                                <span class="text-sm text-gray-600">/ night</span>
+                            </p>
+                        </div>
+            
+                        <!-- Description -->
+                        <div class="mt-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">About this Property</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                <%= home.Description || "Experience unparalleled comfort in this stunning property, located at the heart of convenience. Perfect for relaxation or adventure!" %>
+                            </p>
+                        </div>
+            
+                        <!-- Action Buttons -->
+                        <div class="mt-6 flex gap-4">
+                            <a href="#"
+                                class="bg-blue-600 text-white text-lg px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
+                                Book Now
+                            </a>
+                            <a href="#"
+                                class="bg-gray-100 text-gray-800 text-lg px-6 py-3 rounded-lg shadow-md hover:bg-gray-200 transition duration-300">
+                                Add to Wishlist
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Features Section -->
+                <div class="mt-12 bg-gray-50 p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Property Features</h3>
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Feature Cards -->
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <p class="text-gray-600">
+                                <strong>Type:</strong> <%= home.Type || "Apartment" %>
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-green-100 text-green-600 p-3 rounded-full">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <p class="text-gray-600">
+                                <strong>Bedrooms:</strong> <%= home.Bedrooms || 2 %>
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full">
+                                <i class="fas fa-bath"></i>
+                            </div>
+                            <p class="text-gray-600">
+                                <strong>Bathrooms:</strong> <%= home.Bathrooms || 1 %>
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-red-100 text-red-600 p-3 rounded-full">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <p class="text-gray-600">
+                                <strong>Guests:</strong> <%= home.MaxGuests || 4 %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            <!-- No Listings Placeholder -->
+           
+        </div>
+    </section>
+</body>
+</html>

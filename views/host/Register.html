@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="output.css">
+    <title>Register Page</title>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+
+    <header class="bg-blue-600 text-white w-full py-6 text-center shadow-lg">
+        <h1 class="text-4xl font-bold tracking-wide">Welcome to Airbnb</h1>
+    </header>
+    <nav class="bg-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-center items-center h-16">
+            <!-- Logo -->
+            
+    
+            <!-- Desktop Links -->
+            <div class="hidden md:flex  space-x-16">
+              <a href="/" class="text-white hover:text-blue-200 transition">Home</a>
+              <a href="/bookings" class="text-white hover:text-blue-200 transition">Bookings</a>
+              <a href="/home-list" class="text-white hover:text-blue-200 transition">Home-list</a>
+              <a href="/fav-list" class="text-white hover:text-blue-200 transition">Favourites</a>
+              <a href="/host/host-home-list" class="text-white hover:text-blue-200 transition">Host-Homes</a>
+            </div>
+        </div>
+    </div>
+    </nav>
+    <div class="flex mt-16 justify-center ">
+        <form action="/host/submit-detail" method="POST" class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm space-y-4">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-700">Register Your Home on Airbnb</h2>
+            
+            <input 
+                type="text" 
+                name="Name" 
+                placeholder="Enter your name"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+            />
+            <input 
+                type="number" 
+                name="Price" 
+                placeholder="Price per night (USD)" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+            />
+
+            <input 
+                type="number" 
+                name="Rating" 
+                placeholder="Rating (out of 5)" 
+                step="1"
+                min="0"
+                max="5"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+            />
+
+            <input 
+                type="url" 
+                name="Photourl" 
+                placeholder="Photo URL" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+            />
+
+            <input 
+                type="text" 
+                name="Location" 
+                placeholder="Location (City, Country)" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+            />
+            
+            <input 
+                type="submit" 
+                value="Submit"
+                class="w-full bg-blue-600 text-white py-2 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out cursor-pointer"
+            />
+        </form>
+    </div>
+
+
+
+
+    
+</body>
+</html>
