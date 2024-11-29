@@ -3,6 +3,7 @@ const path=require("path")
 const helmet = require("helmet");
 const cors = require("cors");
 const morgan = require("morgan");
+const favicon = require("serve-favicon");
 //External modules
 const express=require("express")
 //local modules
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.set("view engine","ejs")//to set ejs template engine
 app.set("views ","views")
+app.use(favicon(path.join(rootDirectory, "public", "favicon.ico")));
 app.use(storeRouter)
 // app.get("/",(req,res,next)=>{
     
@@ -49,10 +51,7 @@ app.use(dataSubmit)
 // })
 app.use(express.static(path.join(rootDirectory,"public")))//to access the public folder
 app.use(controller.error404)
-const PORT = process.env.PORT || 3002;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+module.exports=app;
 
 // app.listen(3002,()=>{
 //     console.log("Dynamic paths running");
