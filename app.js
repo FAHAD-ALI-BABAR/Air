@@ -46,9 +46,9 @@ app.use(dataSubmit)
 // })
 app.use(express.static(path.join(rootDirectory,"public")))//to access the public folder
 app.use(controller.error404)
+module.exports=app;
 
-
-app.listen(3002,()=>{
-    console.log("Dynamic paths running");
+// app.listen(3002,()=>{
+//     console.log("Dynamic paths running");
     
-})
+// })
