@@ -2,6 +2,8 @@ const path=require("path")
 const rootDirectory=require("../utils/pathutils")
 const Home=require("../Models/home");
 const { registeredHomes } = require("./host");
+const Favourite = require("../Models/favourite");
+const { error404 } = require("../../MVC-pratice/Controllers/host");
 
 
  exports.getHomes=(req,res,next)=>{
@@ -27,13 +29,17 @@ const { registeredHomes } = require("./host");
         })
     })
  };
- exports.getfavourites=(req,res,next)=>{
-    Home.fetchall((registeredHomes)=>{
-        res.render("store/fav-list",{
-            registeredHomes:registeredHomes
-        })
-    })
- };
+ exports.getfavourites = (req, res, next) => {
+    Favourite.getFavourites(favourites => {
+        Home.fetchall(registeredHomes => {
+            const favouritesHomes = registeredHomes.filter(home => favourites.includes(home.ID));
+            console.log(favouritesHomes); 
+            res.render("store/fav-list", {
+                favouritesHomes: favouritesHomes
+            });
+        });
+    });
+};
  exports.getReserves=(req,res,next)=>{
     Home.fetchall((registeredHomes)=>{
         res.render("store/reserve",{
@@ -57,10 +63,44 @@ const { registeredHomes } = require("./host");
         }
        })};
   
+       exports.addToFavourites=(req,res,next)=>{
+        console.log("Currently on fav list path",req.body);
+        
+        Favourite.AddToFavourites(req.body.id,(err)=>{
+            if(err){
+                console.log("error is shown",err);  
+            }
+            res.redirect("/fav-list")
+        })
+       
+        
+       }
+       
+       exports.postDeleteFromFav=(req,res,next)=>{
+        const homeid=req.params.homeID;
+        console.log("your fav list items id is:",homeid);
+        Favourite.deletefavbyid(homeid,(err)=>{
+            if(err){
+                console.log("error while deleting favourite item :", err);
+                
+            }
+            res.redirect("/fav-list")
+
+        })
+        
+          
+      
+       
+        
+       }
+     
        
 
  exports.error404=(req,res,next)=>{
     // res.status(404).sendFile(path.join(__dirname,"views","404.html"));
-    res.status(404).sendFile(path.join(rootDirectory,"views","404.html"));
+    // res.status(404).sendFile(path.join(rootDirectory,"views","404.html"));
+    res.status(404).render("404",{
+        pagetitle:"Page not found"
+       })
     
 }

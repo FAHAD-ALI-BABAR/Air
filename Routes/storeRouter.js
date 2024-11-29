@@ -12,7 +12,8 @@ storeRouter.get("/",storeController.getindex);
  storeRouter.get("/home-list",storeController.getHomes);
  storeRouter.get("/fav-list",storeController.getfavourites);
  storeRouter.get("/home-detail/:homeID",storeController.getHomedetail);
-
+ storeRouter.post("/fav-list",storeController.addToFavourites);
+ storeRouter.post("/favourites/delete/:homeID",storeController.postDeleteFromFav)
  
  
 

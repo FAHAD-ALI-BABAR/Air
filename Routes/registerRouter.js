@@ -3,5 +3,6 @@ const express=require("express")
 const registerRouter=express.Router();
 const rootDirectory=require("../utils/pathutils")
 const registrationRouter=require("../Controllers/host")
-registerRouter.get("/host/register",registrationRouter.registrationRouter)
+registerRouter.get("/host/edit-homes",registrationRouter.registrationRouter)
+
 module.exports=registerRouter

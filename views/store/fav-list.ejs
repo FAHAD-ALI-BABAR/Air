@@ -10,7 +10,7 @@
 <body class="bg-gray-100 min-h-screen">
     <!-- Header -->
     <header class="bg-blue-600 text-white w-full py-6 text-center shadow-lg">
-        <h1 class="text-4xl font-bold tracking-wide">Welcome to Airbnb Fav-lists</h1>
+        <h1 class="text-4xl font-bold tracking-wide">Welcome to Airbnb Favourite </h1>
     </header>
     <nav class="bg-blue-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +24,7 @@
               <a href="/bookings" class="text-white hover:text-blue-200 transition">Bookings</a>
               <a href="/home-list" class="text-white hover:text-blue-200 transition">Home-list</a>
               <a href="/fav-list" class="text-white hover:text-blue-200 transition">Favourites</a>
-              <a href="/host/host-home-list" class="text-white hover:text-blue-200 transition">Host-Homes</a>
+              <a href="/host/host-home-list" class="text-white hover:text-blue-200 transition">Host Homes</a>
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
 
     <!-- Register Button -->
     <main class="flex flex-col items-center justify-center mt-8">
-        <a href="/host/register"
+        <a href="/host/edit-homes"
             class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
             Go to Register Page
         </a>
@@ -49,7 +49,7 @@
 
             <!-- Listings Grid -->
             <div class="grid gap-6 lg:grid-cols-3 sm:grid-cols-2">
-                <% registeredHomes.forEach((home) => { %>
+                <% favouritesHomes.forEach((home) => { %>
                 <!-- Property Card -->
                 <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden border border-gray-200">
                     <div class="relative">
@@ -72,11 +72,23 @@
                         <p class="text-gray-600 mt-1">
                             Listed on: <%= new Date().toLocaleDateString() %>
                         </p>
-                        <a href="#" class="mt-4 inline-block text-blue-700 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 glass-button">
+                        <form action="/favourites/delete/<%= home.ID %>" method="POST">
+                            <button class="mt-4 inline-block text-blue-700 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 glass-button">
+                                Remove form Favourites
+                            </button>
+                        </form>
+                        <!-- <a href="#" class="mt-4 inline-block text-blue-700 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 glass-button">
                             Book
                         </a>
-                        
-                        
+                        <a href="/home-detail/<%= home.ID %>" class="mt-4 inline-block text-green-700 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 glass-button">
+                            Details
+                        </a> -->
+                        <!-- <form action="/fav-list">
+                            <button  name="id" value="<%= home.ID %>"
+                                class="bg-gray-100 text-gray-800 text-lg px-6 py-3 rounded-lg shadow-md hover:bg-gray-200 transition duration-300">
+                                Add to Favourites
+                            </button>
+                        </form> -->
                         
                     </div>
                 </div>
@@ -84,11 +96,7 @@
             </div>
 
             <!-- No Listings Placeholder -->
-            <% if (registeredHomes.length === 0) { %>
-            <div class="text-center py-12">
-                <p class="text-gray-600">No listings found. Add your first property!</p>
-            </div>
-            <% } %>
+           
         </div>
     </section>
 </body>

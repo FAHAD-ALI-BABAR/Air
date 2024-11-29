@@ -33,7 +33,7 @@
 
     <!-- Register Button -->
     <main class="flex flex-col items-center justify-center mt-8">
-        <a href="/host/register"
+        <a href="/host/edit-homes"
             class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
             Go to Register Page
         </a>
@@ -73,12 +73,16 @@
                         <p class="text-gray-600 mt-1">
                             Listed on: <%= new Date().toLocaleDateString() %>
                         </p>
-                        <a href="#" class="mt-4 inline-block text-blue-700 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 glass-button">
+                        <a href="/host/edit-homes/<%= home.ID %>?editing=true" class="mt-4 inline-block text-blue-700 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 glass-button">
                             Edit
                         </a>
-                        <a href="#" class="mt-4 inline-block text-red-700 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 glass-red-button">
+                        <form action="/host/delete-homes/<%= home.ID %>" method="POST">
+                            <button class="mt-4 inline-block text-red-700 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 glass-red-button" type="submit">
+                       
                             Delete
-                        </a>
+                        
+                    </button>
+                    </form>
                         
                         
                     </div>

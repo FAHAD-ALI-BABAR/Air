@@ -1,5 +1,8 @@
 //core modules
 const path=require("path")
+const helmet = require("helmet");
+const cors = require("cors");
+const morgan = require("morgan");
 //External modules
 const express=require("express")
 //local modules
@@ -12,7 +15,11 @@ const storeRouter = require("./Routes/storeRouter")
 const { Module } = require("module")
 //apppp
 const app=express();
-app.use(express.urlencoded())
+app.use(helmet());
+app.use(cors());
+app.use(morgan("combined"));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 app.set("view engine","ejs")//to set ejs template engine
 app.set("views ","views")
 app.use(storeRouter)
@@ -42,7 +49,12 @@ app.use(dataSubmit)
 // })
 app.use(express.static(path.join(rootDirectory,"public")))//to access the public folder
 app.use(controller.error404)
-app.listen(3002,()=>{
-    console.log("Dynamic paths running");
+const PORT = process.env.PORT || 3002;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+// app.listen(3002,()=>{
+//     console.log("Dynamic paths running");
     
-})
+// })

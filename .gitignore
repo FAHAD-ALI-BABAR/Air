@@ -1,32 +1,16 @@
-<<<<<<< HEAD
 # Node.js dependencies
 node_modules/
-
-# Log files
 npm-debug.log
-yarn-debug.log
 yarn-error.log
 
-# Environment variables file (sensitive information)
-.env        
-
-
-
-
-
-# Ignore any file that contains sensitive data (e.g., user credentials, API keys)
-*.json         # Only if sensitive files are in JSON format
-*.bak          # Backup files, etc.
-
-# Temporary or auto-generated files
-tmp/
-temp/
+# Logs
+logs/
 *.log
-*.bak
-*.swp
 
-
-=======
-/node_modules/
+# Environment files
 .env
->>>>>>> 1c23a9eec9c470268eede9791dfcfe420e6853e6
+.DS_Store
+
+# OS-specific files
+Thumbs.db
+

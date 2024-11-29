@@ -32,7 +32,7 @@
 
     <!-- Register Button -->
     <main class="flex flex-col items-center justify-center mt-8">
-        <a href="/host/register"
+        <a href="/host/edit-homes"
             class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
             Go to Register Page
         </a>
@@ -115,10 +115,13 @@
                                 class="bg-blue-600 text-white text-lg px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
                                 Book Now
                             </a>
-                            <a href="#"
+                            <form action="/fav-list" method="POST">
+                            <button  name="id" value="<%= home.ID %>"
                                 class="bg-gray-100 text-gray-800 text-lg px-6 py-3 rounded-lg shadow-md hover:bg-gray-200 transition duration-300">
-                                Add to Wishlist
-                            </a>
+                                Add to Favourites
+                            </button>
+                        </form>
+                        
                         </div>
                     </div>
                 </div>
