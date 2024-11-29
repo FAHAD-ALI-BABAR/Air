@@ -1,9 +1,6 @@
 //core modules
 const path=require("path")
-const helmet = require("helmet");
-const cors = require("cors");
-const morgan = require("morgan");
-const favicon = require("serve-favicon");
+
 //External modules
 const express=require("express")
 //local modules
@@ -16,14 +13,12 @@ const storeRouter = require("./Routes/storeRouter")
 const { Module } = require("module")
 //apppp
 const app=express();
-app.use(helmet());
-app.use(cors());
-app.use(morgan("combined"));
+
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.set("view engine","ejs")//to set ejs template engine
 app.set("views ","views")
-app.use(favicon(path.join(rootDirectory, "public", "favicon.ico")));
 app.use(storeRouter)
 // app.get("/",(req,res,next)=>{
     
@@ -51,9 +46,9 @@ app.use(dataSubmit)
 // })
 app.use(express.static(path.join(rootDirectory,"public")))//to access the public folder
 app.use(controller.error404)
-module.exports=app;
 
-// app.listen(3002,()=>{
-//     console.log("Dynamic paths running");
+
+app.listen(3002,()=>{
+    console.log("Dynamic paths running");
     
-// })
+})
