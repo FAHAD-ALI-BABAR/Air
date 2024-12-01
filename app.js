@@ -49,6 +49,6 @@ app.use(controller.error404)
 
 
 app.listen(3002,()=>{
-    console.log("Dynamic paths running");
+    console.log("Dynamic paths running at server 3002");
     
 })
